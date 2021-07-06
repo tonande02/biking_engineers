@@ -7,8 +7,7 @@ Background:
 -	Look at weather data and bysykkel data (Oslo)
 
 Question:
--	From-stations with least/most variance in traffic depending on weather
-  o	Also to-stations if time
+-	From-stations with least/most variance in traffic depending on weather (also to-stations if time)
 
 Data sources:
 -	Frost api 
