@@ -12,3 +12,8 @@ Question:
 Data sources:
 -	Frost api 
 -	Bysykkel Oslo (https://oslobysykkel.no/en/open-data/historical)
+
+
+Documents:
+-	https://docs.google.com/document/d/1KSDlu48blHb5QTsF1M6aA96F3tB1eT-87NYCxZDEWYU/edit
+
