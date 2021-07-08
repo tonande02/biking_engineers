@@ -50,8 +50,8 @@ data = fetch_data_from_frost(endpoint, client_id)
 stations = filter_stations_from_data(data)
 
 # # ---- run this to write the data to file ----
-# path = "test_frost.json" # add correct path here
-# write_data_to_file(data, path)
+path = "raw_weather_stations.json" # add correct path here
+write_data_to_file(data, path)
 
 
 # # ---- run this to view content in terminal --
