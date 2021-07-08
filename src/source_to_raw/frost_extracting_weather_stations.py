@@ -20,13 +20,13 @@ def fetch_data_from_frost(url, client_id):
     data = r.json() # entire raw content
     return data
 
-
+# returns just info on the stations in a dict
 def filter_stations_from_data(data):
-    stations = data["data"] # stores just info on the stations in a dict
+    stations = data["data"]
 
     return stations
 
-
+# prints info on stations to terminal in a readable manner
 def view_stations(data):
     station_nr = 1
     for station in data:
@@ -38,15 +38,25 @@ def view_stations(data):
         station_nr += 1
         print()
 
+# writes the data to filepath as a json-file
+def write_data_to_file(data, filepath):
+    with open(filepath, "w") as file:
+        json.dump(data, file, indent=2)
 
+
+
+# get the data
 data = fetch_data_from_frost(endpoint, client_id)
 stations = filter_stations_from_data(data)
 
+# # ---- run this to write the data to file ----
+# path = "test_frost.json" # add correct path here
+# write_data_to_file(data, path)
 
 
-# # optional: just for viewing content in terminal 
-# # prints relevant info on each station
+# # ---- run this to view content in terminal --
+# # view relevant info on each station
 # view_stations(stations)
-# # prints whole data file in formatted json style
+# # view whole data file in formatted json style
 # pretty_data = json.dumps(data, indent=2)
 # print(pretty_data)
