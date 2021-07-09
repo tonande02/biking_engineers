@@ -31,7 +31,8 @@ def filter_relevant_data(data):
         station = dict()
         station["id"] = dictionary["id"]
         station["name"] = dictionary["name"]
-        station["coordinates"] = dictionary["geometry"]["coordinates"]
+        station["latitude"] = dictionary["geometry"]["coordinates"][1]
+        station["longitude"] = dictionary["geometry"]["coordinates"][0]
         
         list_of_station_dicts.append(station)
     
