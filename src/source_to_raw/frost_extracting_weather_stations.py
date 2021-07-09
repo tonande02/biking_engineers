@@ -2,13 +2,6 @@ import json
 import requests
 
 
-# my Frost client_id (Tonje)
-client_id = "6d199937-3f7a-48cb-9c12-384cecb6cb07"
-
-# the url - filtering on county=Oslo
-endpoint = "https://frost.met.no/sources/v0.jsonld?types=SensorSystem&county=Oslo*"
-
-
 # returns the full data as python dict
 def fetch_data_from_frost(url, client_id):
     r = requests.get(endpoint, auth=(client_id,''))
@@ -39,22 +32,25 @@ def view_stations(data):
         print()
 
 # writes the data to filepath as a json-file
-def write_data_to_file(data, filepath):
-    with open(filepath, "w") as file:
-        json.dump(data, file, indent=2)
+def write_data_to_file(data, destination_filepath):
+    with open(destination_filepath, "w") as file:
+        json.dump(data, file, indent=2, ensure_ascii=False) # beholder æøå
 
 
 
-# get the data
+# sets url_endpoint, client_id and destination file paths (edit as needed)
+destination_path = "data/raw/raw_weather_stations.json"
+client_id = "6d199937-3f7a-48cb-9c12-384cecb6cb07" # Tonjes id
+endpoint = "https://frost.met.no/sources/v0.jsonld?types=SensorSystem&county=Oslo*"
+
+# fetch the data
 data = fetch_data_from_frost(endpoint, client_id)
-stations = filter_stations_from_data(data)
 
 # # ---- run this to write the data to file ----
-path = "raw_weather_stations.json" # add correct path here
-write_data_to_file(data, path)
-
+write_data_to_file(data, destination_path)
 
 # # ---- run this to view content in terminal --
+# stations = filter_stations_from_data(data)
 # # view relevant info on each station
 # view_stations(stations)
 # # view whole data file in formatted json style

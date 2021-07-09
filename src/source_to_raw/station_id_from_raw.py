@@ -32,15 +32,16 @@ def write_data_to_file(data, filepath):
             file.write("\n")
 
 
+# sets source and destination filepaths (edit as needed)
+source_filepath = "data/raw/raw_weather_stations.json" # enter correct filepath here
+destination_path = "data/raw/frost_station_ids.txt" # add correct path here
+
 # get the data
-filepath = "raw_weather_stations.json" # enter correct filepath here
-data = get_dict_from_file(filepath)
+data = get_dict_from_file(source_filepath)
 station_ids = station_ids_from_data(data)
 
 # # ---- run this to write the data to file ----
-# path = "frost_station_ids.txt" # add correct path here
-# write_data_to_file(station_ids, path)
-
+write_data_to_file(station_ids, destination_path)
 
 # # ---- run this to view content in terminal --
 # print(station_ids)
