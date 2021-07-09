@@ -1,10 +1,26 @@
 import json
+from os import listdir
 
-def get_json_from_file(json_file):
-    file_path = "data/raw/" + json_file + ".json"
+def get_raw_filenames(file_folder = None):
+    if file_folder == None:
+        file_folder = "."
+    files = []
+    for filename in listdir(file_folder):
+        fn = filename.split(".")
+        if len(fn) == 2:
+            if fn[0][0:6] == "obs_20" and fn[1] == "json":
+                files.append(filename)
+    return files
+
+def get_json_from_file(file_path):
     with open(file_path, "r") as r_file:
         json_content = json.load(r_file)
     return json_content # returns a list of dictionarys
+
+def save_harmonized(filename, harmonized_data):
+    file_path = "data/harmonized/" + filename
+    with open(file_path, "w") as r_file:
+        json.dump(harmonized_data, r_file)
 
 def remove_excess_parts(raw_list_of_dict):
     har_list_of_dict = []
@@ -23,15 +39,17 @@ def reduce_timestamps(list_of_dict):
         dict["ended_at"] = dict["ended_at"].split(".")[0]
     return list_of_dict
 
-def save_harmonized(filename, harmonized_data):
-    file_path = "data/harmonized/" + filename + ".json"
-    with open(file_path, "w") as r_file:
-        json.dump(harmonized_data, r_file)
-
-def main():
-    filename = "obs_2020-03"
-    raw_data = get_json_from_file(filename)
+def harmonize(file_path):
+    raw_data = get_json_from_file(file_path)
     harmonized_data = reduce_timestamps(remove_excess_parts(raw_data))
+    filename = file_path.split("/")[-1]
     save_harmonized(filename, harmonized_data)
 
-main()
+def harmonize_all():
+    file_folder = "data/raw/"
+    filenames = get_raw_filenames(file_folder)
+    for filename in filenames:
+        harmonize(file_folder + filename)
+
+#harmonize_all()
+

@@ -1,20 +1,9 @@
 from datetime import datetime
 import urllib.request 
 
-def get_raw_obs(year, month):
-    url = "https://data.urbansharing.com/oslobysykkel.no/trips/v1/"
-    month = str(month)
-    if len(month) == 1:
-        month = "0" + month
-    url += str(year) + "/" + month + ".json"
-    print(url)
-    filename = "data/raw/obs_" + str(year) + "-" + month + ".json"
-    print(filename)
-#    urllib.request.urlretrieve(url, filename)
-
-# This fuction calls get_raw_obs with all months from the inputed year and month until
+# This fuction returns a list of all months from the inputed year and month until
 # current month if there is no input for to year and month
-def get_all_raw_obs_from(from_year, from_month, to_year = None, to_month = None):
+def get_list_of_months(from_year, from_month, to_year = None, to_month = None):
     months_in_years = []
     if to_year == None:
         to_year = datetime.now().year
@@ -41,10 +30,22 @@ def get_all_raw_obs_from(from_year, from_month, to_year = None, to_month = None)
                 months_in_years.append(str(year) + "-" + str(month))
         for month in months_in_last_year:
             months_in_years.append(str(years[-1]) + "-" + str(month))
-    print(months_in_years)
-    for month in months_in_years:
+    return(months_in_years)
+
+def get_raw_obs(year, month):
+    url = "https://data.urbansharing.com/oslobysykkel.no/trips/v1/"
+    month = str(month)
+    if len(month) == 1:
+        month = "0" + month
+    url += str(year) + "/" + month + ".json"
+    print(url)
+    filepath = "data/raw/obs_" + str(year) + "-" + month + ".json"
+    print(filepath)
+#    urllib.request.urlretrieve(url, filepath) # Download file from url, and save it to filepath
+
+def get_all_raw_obs_from(from_year, from_month, to_year = None, to_month = None):
+    month_list = get_list_of_months(from_year, from_month, to_year, to_month)
+    for month in month_list:
         get_raw_obs(month.split("-")[0], month.split("-")[1])
 
-
-#get_raw_obs(2020, 3)
-#get_all_raw_obs_from(2019, 1, 2019, 1)
+#get_all_raw_obs_from(2019, 1, 2020, 1)
