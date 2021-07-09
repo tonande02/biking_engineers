@@ -53,3 +53,12 @@ def harmonize_all():
 
 #harmonize_all()
 
+def harmonize_station_info():
+    file_path = "data/raw/obs_station_info.json"
+    raw_data = get_json_from_file(file_path)
+#    prind(json.dumps(raw_data, indent=2))
+    harmonized_data = raw_data["data"]["stations"]
+    filename = file_path.split("/")[-1]
+    save_harmonized(filename, harmonized_data)
+
+harmonize_station_info()

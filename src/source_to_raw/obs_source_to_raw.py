@@ -48,4 +48,10 @@ def get_all_raw_obs_from(from_year, from_month, to_year = None, to_month = None)
     for month in month_list:
         get_raw_obs(month.split("-")[0], month.split("-")[1])
 
+def get_station_info():
+    url = "https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json"
+    filepath = "data/raw/obs_station_info.json"
+    urllib.request.urlretrieve(url, filepath) # Download file from url, and save it to filepath
+
 #get_all_raw_obs_from(2019, 1, 2020, 1)
+get_station_info()
