@@ -1,0 +1,245 @@
+{
+  "nr_of_stations": 40,
+  "stations": [
+    {
+      "id": "SN18700",
+      "name": "OSLO - BLINDERN",
+      "latitude": 59.9423,
+      "longitude": 10.72
+    },
+    {
+      "id": "SN18269",
+      "name": "OSLO - HAUGENSTUA",
+      "latitude": 59.9535,
+      "longitude": 10.9035
+    },
+    {
+      "id": "SN18260",
+      "name": "OSLO - HØYBRÅTEN",
+      "latitude": 59.9468,
+      "longitude": 10.9257
+    },
+    {
+      "id": "SN18317",
+      "name": "OSLO - ELVEBAKKEN",
+      "latitude": 59.9188,
+      "longitude": 10.7528
+    },
+    {
+      "id": "SN18245",
+      "name": "OSLO - AMMERUD",
+      "latitude": 59.9652,
+      "longitude": 10.8737
+    },
+    {
+      "id": "SN18170",
+      "name": "OSLO - ØSTENSJØ",
+      "latitude": 59.8955,
+      "longitude": 10.8368
+    },
+    {
+      "id": "SN18215",
+      "name": "OSLO - BROBEKK",
+      "latitude": 59.9323,
+      "longitude": 10.8315
+    },
+    {
+      "id": "SN18233",
+      "name": "OSLO - NYLAND",
+      "latitude": 59.9451,
+      "longitude": 10.864
+    },
+    {
+      "id": "SN18980",
+      "name": "OSLO - LILLEAKER",
+      "latitude": 59.9185,
+      "longitude": 10.635
+    },
+    {
+      "id": "SN18020",
+      "name": "OSLO - LAMBERTSETER",
+      "latitude": 59.8775,
+      "longitude": 10.8185
+    },
+    {
+      "id": "SN18310",
+      "name": "OSLO - TØYEN",
+      "latitude": 59.9147,
+      "longitude": 10.7747
+    },
+    {
+      "id": "SN76914",
+      "name": "ITASMOBAWS1",
+      "latitude": 59.9492,
+      "longitude": 10.715
+    },
+    {
+      "id": "SN18920",
+      "name": "OSLO - BESSERUD",
+      "latitude": 59.9573,
+      "longitude": 10.671
+    },
+    {
+      "id": "SN18690",
+      "name": "E18 HJORTNES",
+      "latitude": 59.9112,
+      "longitude": 10.7043
+    },
+    {
+      "id": "SN18645",
+      "name": "OSLO - SOLLI PLASS",
+      "latitude": 59.9142,
+      "longitude": 10.7202
+    },
+    {
+      "id": "SN18205",
+      "name": "OSLO - LØREN",
+      "latitude": 59.9287,
+      "longitude": 10.7902
+    },
+    {
+      "id": "SN18950",
+      "name": "TRYVANNSHØGDA",
+      "latitude": 59.9847,
+      "longitude": 10.6693
+    },
+    {
+      "id": "SN18235",
+      "name": "OSLO - FURUSET",
+      "latitude": 59.942,
+      "longitude": 10.8972
+    },
+    {
+      "id": "SN18420",
+      "name": "OSLO - DISEN",
+      "latitude": 59.946,
+      "longitude": 10.7903
+    },
+    {
+      "id": "SN18160",
+      "name": "NORDSTRAND",
+      "latitude": 59.873,
+      "longitude": 10.7912
+    },
+    {
+      "id": "SN18815",
+      "name": "OSLO - BYGDØY",
+      "latitude": 59.9048,
+      "longitude": 10.6825
+    },
+    {
+      "id": "SN18315",
+      "name": "OSLO - SOFIENBERG",
+      "latitude": 59.919,
+      "longitude": 10.7623
+    },
+    {
+      "id": "SN18405",
+      "name": "OSLO - SANDAKER",
+      "latitude": 59.9398,
+      "longitude": 10.7727
+    },
+    {
+      "id": "SN18970",
+      "name": "OSLO - LYSAKER",
+      "latitude": 59.9185,
+      "longitude": 10.6348
+    },
+    {
+      "id": "SN18701",
+      "name": "OSLO - BLINDERN PLU",
+      "latitude": 59.9423,
+      "longitude": 10.7202
+    },
+    {
+      "id": "SN18450",
+      "name": "MARIDALSOSET",
+      "latitude": 59.9719,
+      "longitude": 10.7894
+    },
+    {
+      "id": "SN18390",
+      "name": "OSLO - BJØLSEN",
+      "latitude": 59.9418,
+      "longitude": 10.7483
+    },
+    {
+      "id": "SN18240",
+      "name": "E6 FURUSET",
+      "latitude": 59.9378,
+      "longitude": 10.8905
+    },
+    {
+      "id": "SN17980",
+      "name": "OSLO - LJABRUVEIEN",
+      "latitude": 59.8427,
+      "longitude": 10.8236
+    },
+    {
+      "id": "SN18195",
+      "name": "OSLO - HØYENHALL",
+      "latitude": 59.9033,
+      "longitude": 10.8212
+    },
+    {
+      "id": "SN18500",
+      "name": "BJØRNHOLT",
+      "latitude": 60.0513,
+      "longitude": 10.6878
+    },
+    {
+      "id": "SN18180",
+      "name": "OSLO - TRASOP",
+      "latitude": 59.907,
+      "longitude": 10.847
+    },
+    {
+      "id": "SN18270",
+      "name": "OSLO - VESTLI",
+      "latitude": 59.9683,
+      "longitude": 10.9185
+    },
+    {
+      "id": "SN18162",
+      "name": "OSLO - KVÆRNERBYEN",
+      "latitude": 59.9047,
+      "longitude": 10.7864
+    },
+    {
+      "id": "SN18440",
+      "name": "OSLO - KJELSÅS",
+      "latitude": 59.9605,
+      "longitude": 10.7853
+    },
+    {
+      "id": "SN18225",
+      "name": "OSLO - TONSENHAGEN",
+      "latitude": 59.9467,
+      "longitude": 10.8293
+    },
+    {
+      "id": "SN18165",
+      "name": "OSLO - RYEN",
+      "latitude": 59.8963,
+      "longitude": 10.8013
+    },
+    {
+      "id": "SN18210",
+      "name": "OSLO - HOVIN",
+      "latitude": 59.923,
+      "longitude": 10.804
+    },
+    {
+      "id": "SN18703",
+      "name": "OSLO - BLINDERN TESTFELT",
+      "latitude": 59.94256,
+      "longitude": 10.7194
+    },
+    {
+      "id": "SN18410",
+      "name": "RV150 AKER SYKEHUS",
+      "latitude": 59.941,
+      "longitude": 10.798
+    }
+  ]
+}
