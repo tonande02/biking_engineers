@@ -41,7 +41,7 @@ def get_raw_obs(year, month):
     print(url)
     filepath = "data/raw/obs_" + str(year) + "-" + month + ".json"
     print(filepath)
-#    urllib.request.urlretrieve(url, filepath) # Download file from url, and save it to filepath
+    urllib.request.urlretrieve(url, filepath) # Download file from url, and save it to filepath
 
 def get_all_raw_obs_from(from_year, from_month, to_year = None, to_month = None):
     month_list = get_list_of_months(from_year, from_month, to_year, to_month)
@@ -53,5 +53,5 @@ def get_station_info():
     filepath = "data/raw/obs_station_info.json"
     urllib.request.urlretrieve(url, filepath) # Download file from url, and save it to filepath
 
-#get_all_raw_obs_from(2019, 1, 2020, 1)
-get_station_info()
+get_all_raw_obs_from(2021, 6, 2021, 6)
+#get_station_info()

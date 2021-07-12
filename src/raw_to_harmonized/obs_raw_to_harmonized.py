@@ -51,7 +51,7 @@ def harmonize_all():
     for filename in filenames:
         harmonize(file_folder + filename)
 
-#harmonize_all()
+harmonize_all()
 
 def harmonize_station_info():
     file_path = "data/raw/obs_station_info.json"
@@ -61,4 +61,4 @@ def harmonize_station_info():
     filename = file_path.split("/")[-1]
     save_harmonized(filename, harmonized_data)
 
-harmonize_station_info()
+#harmonize_station_info()
