@@ -15,6 +15,9 @@ with open('data/raw/frost_station_ids.txt', 'r') as file:
 
 stations = ",".join(clean_station)
 
+# elements - temperature: 'air_temperature'
+# elements - precipitation: 'sum(precipitation_amount PT1H)'
+
 parameters = {
     'sources': stations,
     'elements': 'sum(precipitation_amount PT1H)',
