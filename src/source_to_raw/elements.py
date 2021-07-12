@@ -11,11 +11,13 @@ with open('data/raw/frost_station_ids.txt', 'r') as file:
     clean_station = []
     for element in station:
         clean_station.append(element.strip())
-    print(clean_station)
+    # print(clean_station)
+
+stations = ",".join(clean_station)
 
 parameters = {
-    'sources': clean_station,
-    'elements': 'mean(air_temperature PT1H),sum(precipitation_amount PT1H)',
+    'sources': stations,
+    'elements': 'sum(precipitation_amount PT1H)',
     'referencetime': '2021-06-01T00:00:00.000Z/2021-07-01T00:00:00.000Z',
 }
 
@@ -26,5 +28,5 @@ print(r.status_code)
 
 weather_dict = r.json()
 
-with open('data/raw/weather_data.json', 'w') as file:
+with open('data/raw/weather_data_precipitation.json', 'w') as file:
     json.dump(weather_dict, file, indent=2)
