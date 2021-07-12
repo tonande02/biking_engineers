@@ -26,6 +26,10 @@ conn = psycopg2.connect(
 
 cur = conn.cursor()
 
+#CREATE SCHEMAS? WHICH ONES? WHICH TABLES IN WHICH SCHEMAS?
+
+#https://stackoverflow.com/questions/65584986/insert-json-data-into-postgresql-table-using-python
+
 cur.execute("CREATE TABLE IF NOT EXISTS BIKE_STATION (id serial PRIMARY KEY, num integer, data varchar);")
 
 conn.commit()
