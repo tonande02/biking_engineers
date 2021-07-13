@@ -20,3 +20,29 @@ alter column lat type numeric using lat::numeric,
 alter column lon type numeric using lon::numeric,
 alter column capacity type int using capacity::int;
 
+select * from cleansed.rain r 
+
+alter table cleansed.rain 
+alter column referencetime type timestamp using referencetime::timestamp,
+alter column observations_value type float using observations_value::float,
+alter column observations_timeseriesid type float using observations_timeseriesid::float,
+alter column observations_exposurecategory type float using observations_exposurecategory::float,
+alter column observations_qualitycode type float using observations_qualitycode::float;
+
+select * from cleansed.temperature t 
+
+alter table cleansed.temperature 
+alter column referencetime type timestamp using referencetime::timestamp,
+alter column observations_value type float using observations_value::float,
+alter column observations_level_value type float using observations_level_value::float,
+alter column observations_timeseriesid type float using observations_timeseriesid::float,
+alter column observations_exposurecategory type float using observations_exposurecategory::float,
+alter column observations_qualitycode type float using observations_qualitycode::float;
+
+
+
+
+
+
+
+
