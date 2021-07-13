@@ -31,7 +31,6 @@ def create_table(schema, name, column_list):
     print(create_str)
     cur.execute(create_str)
 #-----------------------------------------------------------------
-<<<<<<< HEAD
 def populate_db_from_list_of_dict(schema_name, table_name, list_of_dict_to_add):
     list_of_rows = []
     for dict in list_of_dict_to_add:
@@ -46,21 +45,6 @@ def populate_db_from_list_of_dict(schema_name, table_name, list_of_dict_to_add):
     cur.execute(insert_query, list_of_rows)
     return cur.rowcount
 
-=======
-def populate_db_from_list_of_dict(schema, table_name, list_of_dict_to_add):
-    value_str = ""
-    for dict in list_of_dict_to_add:
-        value_str += "('"
-        for value in dict.values():
-            value_str += str(value).replace("'", "") + "', '" # "'SN18700', 'OSLO - BLINDERN', '59.9423', '10.72'"
-        value_str = value_str[:-3]
-        value_str += "),"
-        # print(value_str)
-    create_str = "INSERT INTO " + schema + "." + table_name + " (" + ", ".join(dict.keys()) + ") VALUES " + value_str[:-1] + ";" #"id, name, latitude, longditude"
-    # print(create_str)
-    cur.execute(create_str)
-    return cur.rowcount
->>>>>>> 42b1befc14a4bdd1f7aa37c537761244a59a9fbe
 #-----------------------------------------------------------------
 def get_list_of_dict_from_json(file_path):
     with open(file_path, "r") as r_file:
@@ -204,21 +188,9 @@ def populate_easy():
     obs_bike_trip_data = get_list_of_dict_from_json("data/harmonized/obs_2021-06.json")
     obs_bike_station_data = get_list_of_dict_from_json("data/harmonized/obs_station_info.json")
     
-<<<<<<< HEAD
     print(populate_db_from_list_of_dict(schema, "weather_station", frost_weather_station_data))
     print(populate_db_from_list_of_dict(schema, "bike_trip", obs_bike_trip_data))
     print(populate_db_from_list_of_dict(schema, "bike_station", obs_bike_station_data))
-=======
-    # print(populate_db_from_list_of_dict(schema, "weather_station", frost_weather_station_data))
-    # print(populate_db_from_list_of_dict(schema, "bike_trip", obs_bike_trip_data))
-    # print(populate_db_from_list_of_dict(schema, "bike_station", obs_bike_station_data))
-
-# file_name = input("File_name? ")
-# coulumns = get_columns_in_json("data/harmonized/" + file_name) #obs_2020-03.json")
-# table_name = "test_1"
-
-# create_table(table_name, coulumns)
->>>>>>> 42b1befc14a4bdd1f7aa37c537761244a59a9fbe
 
 #################################################################
 schema = "cleansed"
