@@ -32,16 +32,18 @@ def create_table(schema, name, column_list):
     cur.execute(create_str)
 #-----------------------------------------------------------------
 def populate_db_from_list_of_dict(schema, table_name, list_of_dict_to_add):
-
+    value_str = ""
     for dict in list_of_dict_to_add:
-        value_str = "'"
+        value_str += "('"
         for value in dict.values():
             value_str += str(value).replace("'", "") + "', '" # "'SN18700', 'OSLO - BLINDERN', '59.9423', '10.72'"
         value_str = value_str[:-3]
-        print(value_str)
-        create_str = "INSERT INTO " + schema + "." + table_name + " (" + ", ".join(dict.keys()) + ") VALUES (" + value_str + ");" #"id, name, latitude, longditude"
-
-        cur.execute(create_str)
+        value_str += "),"
+        # print(value_str)
+    create_str = "INSERT INTO " + schema + "." + table_name + " (" + ", ".join(dict.keys()) + ") VALUES " + value_str[:-1] + ";" #"id, name, latitude, longditude"
+    # print(create_str)
+    cur.execute(create_str)
+    return cur.rowcount
 #-----------------------------------------------------------------
 def get_list_of_dict_from_json(file_path):
     with open(file_path, "r") as r_file:
@@ -113,9 +115,9 @@ def populate_easy():
     obs_bike_trip_data = get_list_of_dict_from_json("data/harmonized/obs_2021-06.json")
     obs_bike_station_data = get_list_of_dict_from_json("data/harmonized/obs_station_info.json")
     
-    populate_db_from_list_of_dict(schema, "weather_station", frost_weather_station_data)
-    populate_db_from_list_of_dict(schema, "bike_trip", obs_bike_trip_data)
-    populate_db_from_list_of_dict(schema, "bike_station", obs_bike_station_data)
+    # print(populate_db_from_list_of_dict(schema, "weather_station", frost_weather_station_data))
+    # print(populate_db_from_list_of_dict(schema, "bike_trip", obs_bike_trip_data))
+    # print(populate_db_from_list_of_dict(schema, "bike_station", obs_bike_station_data))
 
 # file_name = input("File_name? ")
 # coulumns = get_columns_in_json("data/harmonized/" + file_name) #obs_2020-03.json")
