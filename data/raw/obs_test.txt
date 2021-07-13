@@ -1,0 +1,19 @@
+https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json
+
+[
+	{
+		"started_at": "2020-03-17 23:11:09.156000+00:00", 
+		"ended_at": "2020-03-17 23:16:37.235000+00:00", 
+		"duration": 328, 
+		"start_station_id": "413", 
+		"start_station_name": "Majorstuen", 
+		"start_station_description": "p\u00e5 Vinkelplassen", 
+		"start_station_latitude": 59.929045, 
+		"start_station_longitude": 10.716926, 
+		"end_station_id": "451", 
+		"end_station_name": "Suhms gate", 
+		"end_station_description": "ved Oslo d\u00f8vekirke", 
+		"end_station_latitude": 59.929419, 
+		"end_station_longitude": 10.726195
+	}
+]
