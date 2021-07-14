@@ -2,20 +2,6 @@ import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 import json
 
-# conn = psycopg2.connect(
-#     host = "academy-de-course-2021-summer-prod-001.postgres.database.azure.com",
-#     dbname = "postgres",
-#     user = "consultant@academy-de-course-2021-summer-prod-001",
-#     password = "3eBXkuVvaJ5ncNGP",
-#     port = 5432
-# )
-
-# conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
-
-# with conn.cursor() as cur:
-#     cur.execute("CREATE DATABASE bikes_weather_db;")
-
-# conn.close()
 #-----------------------------------------------------------------
 def create_schema(name):
 #    global cur
@@ -120,9 +106,6 @@ def get_measurement_data_from_json(file_path):
                     else:
                         print(f"FAULT: len(pre_data) == {len(pre_data)} and len(data) == {len(data)}")
                     data = []
-
-        # if len(data) > 10:
-        #     all_data.append(tuple(data))
     # print(all_data)
     return all_data
 
@@ -138,17 +121,6 @@ def populate_db_from_list_of_tuples(schema_name, table_name, columns, list_of_tu
     # return insert_query, list_of_rows
     cur.execute(insert_query, list_of_rows)
     return cur.rowcount
-
-#-----------------------------------------------------------------
-def populate_hard():
-    frost_temp_columns = get_columns_frost_json("data/raw/weather_data_temperature.json")
-    frost_perc_columns = get_columns_frost_json("data/raw/weather_data_precipitation.json")
-
-    frost_temp_data = get_measurement_data_from_json("data/raw/weather_data_temperature.json")
-    frost_perc_data = get_measurement_data_from_json("data/raw/weather_data_precipitation.json")
-    
-    print(populate_db_from_list_of_tuples(schema, "temperature", frost_temp_columns, frost_temp_data))
-    print(populate_db_from_list_of_tuples(schema, "rain", frost_perc_columns, frost_perc_data))
 
 #-----------------------------------------------------------------    
 def get_columns_from_frost_stations_json(file_path):
@@ -169,7 +141,7 @@ def get_columns_from_obs_json(file_path):
     return column_list
 #-----------------------------------------------------------------
 def create_schema_and_tables():
-    create_schema(schema)
+    create_schema(SCHEMA)
 
     frost_temp_columns = get_columns_frost_json("data/raw/weather_data_temperature.json")
     frost_perc_columns = get_columns_frost_json("data/raw/weather_data_precipitation.json")
@@ -177,58 +149,56 @@ def create_schema_and_tables():
     obs_bike_trip_columns = get_columns_from_obs_json("data/harmonized/obs_2021-06.json")
     obs_bike_station_columns = get_columns_from_obs_json("data/harmonized/obs_station_info.json")
 
-    create_table(schema, "weather_station", frost_weather_station_columns)
-    create_table(schema, "temperature", frost_temp_columns)
-    create_table(schema, "rain", frost_perc_columns)
-    create_table(schema, "bike_station", obs_bike_station_columns)
-    create_table(schema, "bike_trip", obs_bike_trip_columns)
+    create_table(SCHEMA, "weather_station", frost_weather_station_columns)
+    create_table(SCHEMA, "temperature", frost_temp_columns)
+    create_table(SCHEMA, "rain", frost_perc_columns)
+    create_table(SCHEMA, "bike_station", obs_bike_station_columns)
+    create_table(SCHEMA, "bike_trip", obs_bike_trip_columns)
 
 def populate_easy():
     frost_weather_station_data = get_list_of_dict_from_json("data/harmonized/harmonized_weather_stations.json")
     obs_bike_trip_data = get_list_of_dict_from_json("data/harmonized/obs_2021-06.json")
     obs_bike_station_data = get_list_of_dict_from_json("data/harmonized/obs_station_info.json")
     
-    print(populate_db_from_list_of_dict(schema, "weather_station", frost_weather_station_data))
-    print(populate_db_from_list_of_dict(schema, "bike_trip", obs_bike_trip_data))
-    print(populate_db_from_list_of_dict(schema, "bike_station", obs_bike_station_data))
+    print(populate_db_from_list_of_dict(SCHEMA, "weather_station", frost_weather_station_data))
+    print(populate_db_from_list_of_dict(SCHEMA, "bike_trip", obs_bike_trip_data))
+    print(populate_db_from_list_of_dict(SCHEMA, "bike_station", obs_bike_station_data))
+
+#-----------------------------------------------------------------
+def populate_hard():
+    frost_temp_columns = get_columns_frost_json("data/raw/weather_data_temperature.json")
+    frost_perc_columns = get_columns_frost_json("data/raw/weather_data_precipitation.json")
+
+    frost_temp_data = get_measurement_data_from_json("data/raw/weather_data_temperature.json")
+    frost_perc_data = get_measurement_data_from_json("data/raw/weather_data_precipitation.json")
+    
+    print(populate_db_from_list_of_tuples(schema, "temperature", frost_temp_columns, frost_temp_data))
+    print(populate_db_from_list_of_tuples(schema, "rain", frost_perc_columns, frost_perc_data))
 
 #################################################################
-schema = "cleansed"
-db_name = "biking_engineers"#"bikes_weather_db"#
+SCHEMA = "cleansed"
+DB_NAME = "biking_engineers"#"bikes_weather_db"#
 
-conn = psycopg2.connect(
-    host = "academy-de-course-2021-summer-prod-001.postgres.database.azure.com",
-    dbname = db_name,
-    user = "consultant@academy-de-course-2021-summer-prod-001",
-    password = "3eBXkuVvaJ5ncNGP",
-    port = 5432
-)
+def main():
+    conn = psycopg2.connect(
+        host = "academy-de-course-2021-summer-prod-001.postgres.database.azure.com",
+        dbname = DB_NAME,
+        user = "consultant@academy-de-course-2021-summer-prod-001",
+        password = "3eBXkuVvaJ5ncNGP",
+        port = 5432
+    )
 
-cur = conn.cursor()
+    cur = conn.cursor()
 
-# create_schema_and_tables()
-# populate_easy()
-populate_hard()
+    # create_schema_and_tables()
+    # populate_easy()
+    populate_hard()
 
-conn.commit()
-conn.close()
-
-
-
+    conn.commit()
+    conn.close()
 
 
-"""
-        create_str = "INSERT INTO " + schema + "." + table_name + " (" + ", ".join(dict.keys()) + ") VALUES (" + value_str + ");" #"id, name, latitude, longditude"
-        args_str = ','.join(cur.mogrify("(%s,%s,%s,%s,%s,%s,%s,%s,%s)", x) for x in tup)
+if __name__ == "__main__":
+    main()
 
-mogr_str = []
-tup = tuple(("a1","b2","c3","d4"))
-print(tup)
-for x in tup:
-    moggy = cur.mogrify("(%s,%s,%s,%s)", x)
-    print(moggy)
-    mogr_str.append(moggy)
-print(mogr_str)
-args_str = ','.join(mogr_str)
-print(args_str)
-"""
+

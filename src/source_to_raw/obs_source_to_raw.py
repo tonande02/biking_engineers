@@ -30,7 +30,7 @@ def get_list_of_months(from_year, from_month, to_year = None, to_month = None):
                 months_in_years.append(str(year) + "-" + str(month))
         for month in months_in_last_year:
             months_in_years.append(str(years[-1]) + "-" + str(month))
-    return(months_in_years)
+    return (months_in_years)
 
 def get_raw_obs(year, month):
     url = "https://data.urbansharing.com/oslobysykkel.no/trips/v1/"
